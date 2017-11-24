@@ -14,8 +14,8 @@ You'll need the following:
 
 Now you're ready to start working with the app. Clone the repo and change to the directory where the sample app is located.
   ```
-git clone https://github.com/IBM-Bluemix/get-started-python
-cd get-started-python
+git clone https://github.com/ankit-lnmiit/Online-Banking-System
+cd Online-Banking-System
   ```
 
   Peruse the files in the *get-started-python* directory to familiarize yourself with the contents.
@@ -31,7 +31,7 @@ pip install -r requirements.txt
 
 Run the app.
   ```
-python hello.py
+python app.py
   ```
 
  View your app at: http://localhost:8000
@@ -85,49 +85,23 @@ cf apps
 
 ## 5. Add a database
 
-Next, we'll add a NoSQL database to this application and set up the application so that it can run locally and on {{site.data.keyword.Bluemix_notm}}.
+MongoDB is already integrated with this app.
+mongodb://<dbuser>:<dbpassword>@ds155634.mlab.com:55634/onlinebank
+  
 
-1. Log in to {{site.data.keyword.Bluemix_notm}} in your Browser. Browse to the `Dashboard`. Select your application by clicking on its name in the `Name` column.
-2. Click on `Connections` then `Connect new`.
-2. In the `Data & Analytics` section, select `Cloudant NoSQL DB` and `Create` the service.
-3. Select `Restage` when prompted. {{site.data.keyword.Bluemix_notm}} will restart your application and provide the database credentials to your application using the `VCAP_SERVICES` environment variable. This environment variable is only available to the application when it is running on {{site.data.keyword.Bluemix_notm}}.
-
-Environment variables enable you to separate deployment settings from your source code. For example, instead of hardcoding a database password, you can store this in an environment variable which you reference in your source code. [Learn more...](/docs/manageapps/depapps.html#app_env)
 
 ## 6. Use the database
 
-We're now going to update your local code to point to this database. We'll create a json file that will store the credentials for the services the application will use. This file will get used ONLY when the application is running locally. When running in {{site.data.keyword.Bluemix_notm}}, the credentials will be read from the VCAP_SERVICES environment variable.
 
-1. Create a file called `vcap-local.json` in the `get-started-python` directory with the following content:
-  ```
-  {
-    "services": {
-      "cloudantNoSQLDB": [
-        {
-          "credentials": {
-            "username":"CLOUDANT_DATABASE_USERNAME",
-            "password":"CLOUDANT_DATABASE_PASSWORD",
-            "host":"CLOUDANT_DATABASE_HOST"
-          },
-          "label": "cloudantNoSQLDB"
-        }
-      ]
-    }
-  }
-  ```
 
-2. Back in the {{site.data.keyword.Bluemix_notm}} UI, select your App -> Connections -> Cloudant -> View Credentials
-
-3. Copy and paste the `username`, `password`, and `host` from the credentials to the same fields of the `vcap-local.json` file replacing **CLOUDANT_DATABASE_USERNAME**, **CLOUDANT_DATABASE_PASSWORD**, and **CLOUDANT_DATABASE_URL**.
-
-4. Run your application locally.
+1. Run your application locally.
   ```
 python hello.py
   ```
 
   View your app at: http://localhost:8000. Any names you enter into the app will now get added to the database.
 
-5. Make any changes you want and re-deploy to {{site.data.keyword.Bluemix_notm}}!
+2. Make any changes you want and re-deploy to {{site.data.keyword.Bluemix_notm}}!
   ```
 cf push
   ```
