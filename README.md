@@ -61,8 +61,10 @@ Replace the *API-endpoint* in the command with an API endpoint from the followin
 
 |URL                             |Region          |
 |:-------------------------------|:---------------|
+| https://api.ng.bluemix.net     | US South       |
 | https://api.eu-de.bluemix.net  | Germany        |
-|
+| https://api.eu-gb.bluemix.net  | United Kingdom |
+| https://api.au-syd.bluemix.net | Sydney         |
 
 Login to your {{site.data.keyword.Bluemix_notm}} account
 
@@ -87,11 +89,6 @@ cf apps
 
 MongoDB is already integrated with this app.
 mongodb://<dbuser>:<dbpassword>@ds155634.mlab.com:55634/onlinebank
-  
-
-
-## 6. Use the database
-
 
 
 1. Run your application locally.
